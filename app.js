@@ -6,9 +6,21 @@ let jocks = [
     { name: "OBJ", sport: "Football", bestYear: 2015 },
     { name: "Tyson", sport: "Boxing", bestYear: 1986 },
 ]
+let jocksFullNames = [
+    { first: 'LeBron', last: 'James' },
+    { first: 'Odell', last: 'Beckham Jr' },
+    { first: 'Mike', last: 'Tyson' }
+];
+let peeps = [
+    { name: 'Deidre', age: 26, city: 'Brooklyn' },
+    { name: 'Tasharah', gender: 'Female' },
+    { name: 'Malik', gender: 'Male' },
+    { name: 'Zoe', age: 25, city: 'Trenton' }
+];
 
 //forEach- doubleValues
 function doubleValues(array) {
+    //Translates To What Will Show In The Console.
     let doubledArray = [];
 
     array.forEach(function (value) {
@@ -21,6 +33,7 @@ console.log(doubledArray); // Console: (6) [2, 6, 20, 60, 200, 600]
 
 //forEach- onlyEvenValues
 function onlyEvenValues(arr) {
+    //Translates To What Will Show In The Console.
     let evenValuesArray = [];
 
     arr.forEach(function (value) {
@@ -35,6 +48,7 @@ console.log(evenValuesArray); // Console: (2) [10, 100]
 
 //forEach- showFirstAndLast
 function showFirstAndLast(arrayString) {
+    //Translates To What Will Show In The Console.
     let resultArray = [];
 
     arrayString.forEach(function (string) {
@@ -63,6 +77,7 @@ console.log(jocksObject);
 
 //forEach - vowelCount
 function vowelCount(string) {
+    //Translates To What Will Show In The Console.
     let countObject = {};
     string = string.toLowerCase();
     let vowels = ['a', 'e', 'i', 'o', 'u'];
@@ -80,5 +95,53 @@ function vowelCount(string) {
 }
 let fruit = "Apple, Grapes, Oranges, Pineapple, Strawberry";
 let resultString = vowelCount(fruit);
-console.log(resultString);
+console.log(resultString); // Console: {a: 5, e: 6, o: 1, i: 1}
 
+//map- doubleValuesWithMap
+function doubleValuesWithMap(x) {
+    return x * 2;
+}
+let doubleNum = numbers.map(doubleValuesWithMap)
+console.log(doubleNum); // Console: (6) [2, 6, 20, 66, 200, 666]
+
+//map- valTimesIndex
+function valTimesIndex(x) {
+    return x * 20;
+}
+let multiplyNum = numbers.map(valTimesIndex)
+console.log(multiplyNum); // Console: (6) [20, 60, 200, 660, 2000, 6660]
+
+//map- extractKey
+function extractKey(arrObjects, key) {
+    // Uses the map method to create a new array with values of the specified key
+    let extractedValues = arrObjects.map(function (obj) {
+        return obj[key];
+    });
+    return extractedValues;
+}
+let sports = extractKey(jocks, 'sport');
+console.log(sports); // Console: (3) ['Basketball', 'Football', 'Boxing']
+
+//map- extractFullName
+function extractFullName(arrayOfObjects) {
+    // Use the map method to create a new array with concatenated full names
+    let fullNames = arrayOfObjects.map(function (obj) {
+        return `${obj['first']} ${obj['last']}`
+    });
+    return fullNames;
+}
+let fullName = extractFullName(jocksFullNames);
+console.log(fullName); // Console: (3) ['LeBron James', 'Odell Beckham Jr', 'Mike Tyson']
+
+//filter- filterByValue
+function filterByValue(arrayOfObj, key) {
+    // Uses the filter method to create a new array with objects containing the specified key
+    let filteredObjects = arrayOfObj.filter(function (obj) {
+        return key in obj;
+    });
+    return filteredObjects;
+}
+let outcome = filterByValue(peeps, 'age');
+console.log(outcome);
+
+//filter- find
