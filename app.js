@@ -145,3 +145,47 @@ let outcome = filterByValue(peeps, 'age');
 console.log(outcome);
 
 //filter- find
+function find(array, value) {
+    // Uses the find method to search for the first element with the specified value
+    return array.find(function (element) {
+        return element === value;
+    });
+}
+console.log(find(toons, 'Family Guy')); // Console: Family Guy
+console.log(find(toons, 'looney Toons')); // Console: undefined
+
+//filter- findInObj
+function findInObj(arrOfObj, key) {
+    // Uses the filter method to create a new array with objects containing the specified key
+    let itemsInObj = arrOfObj.filter(function (obj) {
+        return key in obj;
+    });
+    return itemsInObj;
+}
+let endResult = findInObj(peeps, 'gender');
+console.log(endResult);
+
+//filter- removeVowels
+function removeVowels(string) {
+    // Uses the filter method to create a new array with non-vowel characters
+    let filteredArray = Array.from(string.toLowerCase()).filter(function (char) {
+        return !['a', 'e', 'i', 'o', 'u', 'y'].includes(char);
+    });
+    // Uses the join method to concatenate the characters into a string
+    return filteredArray.join('');
+}
+let filterResultString = removeVowels(fruit);
+console.log(filterResultString); // Console: ppl, grps, rngs, pnppl, strwbrr
+
+//filter- doubleOddNumbers
+function doubleOddNumbers(array) {
+    // Uses the map method to double all numbers
+    // Uses the filter method to select only the odd numbers
+    return array.map(function (numb) {
+        return numb * 2;
+    }).filter(function (numb) {
+        return numb % 2 !== 0; // Filter only odd numbers
+    });
+}
+let numbersResult = doubleOddNumbers(numbers);
+console.log(numbersResult); // Console: []
